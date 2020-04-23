@@ -10,7 +10,7 @@ const db = require("./models");
 
 // app.use(express.static("public"));
 app.use(express.static("dist", {
-  setHeaders: (res, path, stat) => {
+  setHeaders: (res, path) => {
     let dotIndex = path.indexOf(".");
     if (dotIndex === -1) {
       return;
@@ -53,7 +53,7 @@ app.set("view engine", "handlebars");
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 
-app.get("")
+// app.get("")
 
 db.sequelize.sync().then(function () {
   app.listen(PORT, function () {
