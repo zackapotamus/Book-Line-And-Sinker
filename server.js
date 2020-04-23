@@ -10,9 +10,11 @@ const db = require("./models");
 
 // app.use(express.static("public"));
 app.use(express.static("dist", {
-  setHeaders: (res, path) => {
+  setHeaders: function (res, path) {
+    console.log(path);
     let dotIndex = path.indexOf(".");
     if (dotIndex === -1) {
+      console.log("got this far");
       return;
     } else {
       switch (path.substring(dotIndex)) {
